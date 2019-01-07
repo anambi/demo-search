@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +52,7 @@ public class ProductController {
   //@PreAuthorize(value = "hasRole('ADMIN')")
   @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public Product update(@PathVariable("id") String id, @Valid @RequestBody Product product) {
+    product.setId(id);
     return this.productRepository.save(product);
   }
 
@@ -76,6 +78,14 @@ public class ProductController {
   public Page<Product> query(@RequestParam(value = "query", defaultValue = "*") String query,
       Pageable pageable) {
     return productRepository.search(QueryBuilders.queryStringQuery(query), pageable);
+  }
+
+  /**
+   * Delete by product Id
+   */
+  @DeleteMapping(value = "/{id}")
+  public void delete(@PathVariable("id") String id) {
+    productRepository.deleteById(id);
   }
 
 }
