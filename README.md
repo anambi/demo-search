@@ -67,7 +67,7 @@ Example:
 ```
 curl -XPATCH 'http://localhost:8080/api/products/10351869' -H 'Content-Type: application/json' -d '{"price":41.99}'
 ```
-#### PATCH
+#### DELETE
 Example:
 ```
 curl -XDELETE 'http://localhost:8080/api/products/10351869'
