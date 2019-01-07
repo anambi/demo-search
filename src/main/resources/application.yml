@@ -1,0 +1,15 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: elasticsearch:9300
+      cluster-name: docker-cluster
+    web:
+      pageable:
+        default-page-size: 10
+---
+spring:
+  profiles: qa
+
+---
+spring:
+  profiles: prod
