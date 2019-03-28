@@ -72,7 +72,3 @@ Example:
 ```
 curl -XDELETE 'http://localhost:8080/api/products/10351869'
 ```
-
-## Architecture
-
-![Imgur](./design/product-search-design.jpeg)
